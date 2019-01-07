@@ -23,8 +23,6 @@ class App extends Component {
                 videos: videos,
                 selectedVideo: videos[0]
             })
-            // this.setState({videos: data})
-            // console.log(this.state.videos)
         })
     }
 
