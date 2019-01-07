@@ -12,11 +12,17 @@ class App extends Component {
     constructor(props) {
         super(props)
 
-        this.state = {videos: []}
+        this.state = {
+            videos: [],
+            selectedVideo: null
+        }
 
         YTSearch({key: API_KEY, term: 'surfboards'}, (videos) => {
             // es6 key와 value 이름이 같은 경우에만 아래처럼 쓸 수 있음.
-            this.setState({videos})
+            this.setState({
+                videos: videos,
+                selectedVideo: videos[0]
+            })
             // this.setState({videos: data})
             // console.log(this.state.videos)
         })
@@ -26,8 +32,13 @@ class App extends Component {
         return (
             <div>
                 <SearchBar/>
-                <VideoDetail video={this.state.videos[0]}/>
-                <VideoList videos={this.state.videos}/>
+                <VideoDetail video={this.state.selectedVideo}/>
+                <VideoList
+                    onVideoSelect={selectedVideo => {
+                        console.log(selectedVideo)
+                        this.setState({selectedVideo})
+                    }}
+                    videos={this.state.videos}/>
             </div>
         )
     }
