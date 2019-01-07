@@ -17,7 +17,7 @@ class App extends Component {
             selectedVideo: null
         }
 
-        YTSearch({key: API_KEY, term: 'surfboards'}, (videos) => {
+        YTSearch({key: API_KEY, term: 'Martin Garrix Game Over'}, (videos) => {
             // es6 key와 value 이름이 같은 경우에만 아래처럼 쓸 수 있음.
             this.setState({
                 videos: videos,
